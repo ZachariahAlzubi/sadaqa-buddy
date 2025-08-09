@@ -22,10 +22,6 @@ export default function ConnectBankAccount() {
 
   const handleConnectBank = async (bankName) => {
     setConnectingBank(bankName);
-
-    // Simulate API call to Plaid and database record creation
-    await new Promise(resolve => setTimeout(resolve, 2000));
-
     try {
       await BankAccount.create({
         plaid_item_id: `item_${Date.now()}`,
