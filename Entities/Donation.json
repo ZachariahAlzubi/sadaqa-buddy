@@ -1,0 +1,46 @@
+{
+  "name": "Donation",
+  "type": "object",
+  "properties": {
+    "amount": {
+      "type": "number",
+      "description": "Donation amount"
+    },
+    "charity_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Charity receiving the donation"
+    },
+    "bank_account_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Bank account used for donation"
+    },
+    "donation_type": {
+      "type": "string",
+      "enum": ["sadaqah", "zakat"],
+      "description": "Mode of donation"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pending", "completed", "failed"],
+      "default": "completed",
+      "description": "Processing status"
+    },
+    "receipt_number": {
+      "type": "string",
+      "description": "Internal receipt identifier"
+    },
+    "payment_method": {
+      "type": "string",
+      "description": "Payment method description"
+    },
+    "disbursement_method": {
+      "type": "string",
+      "enum": ["ach", "check"],
+      "description": "How funds are disbursed to charity"
+    }
+  },
+  "required": ["amount", "charity_id", "bank_account_id", "donation_type"]
+}
+
