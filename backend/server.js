@@ -131,6 +131,20 @@ function createCrudRoutes(path, table, opts = {}) {
   app.use(`/api/v1/${path}`, router);
 }
 
+
+// put this BEFORE createCrudRoutes('users', ...)
+app.get('/api/v1/users/me', async (req, res) => {
+  try {
+    const result = await db.query('SELECT * FROM users WHERE email = $1', [req.user.email]);
+    res.json(result.rows[0] || {});
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'internal error' });
+  }
+});
+
+
+
 createCrudRoutes('users', 'users', { userScoped: false });
 createCrudRoutes('bankaccounts', 'bank_accounts');
 createCrudRoutes('charities', 'charities', { userScoped: false });
