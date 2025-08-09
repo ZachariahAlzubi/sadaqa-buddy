@@ -1,0 +1,64 @@
+{
+  "name": "BankAccount",
+  "type": "object",
+  "properties": {
+    "plaid_item_id": {
+      "type": "string",
+      "description": "Plaid item identifier"
+    },
+    "plaid_account_id": {
+      "type": "string",
+      "description": "Plaid account identifier"
+    },
+    "account_name": {
+      "type": "string",
+      "description": "Display name for account"
+    },
+    "account_mask": {
+      "type": "string",
+      "description": "Last 4 digits of account"
+    },
+    "account_type": {
+      "type": "string",
+      "enum": [
+        "checking",
+        "savings",
+        "credit"
+      ],
+      "description": "Type of account"
+    },
+    "institution_name": {
+      "type": "string",
+      "description": "Bank institution name"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to process transactions from this account"
+    },
+    "sync_cursor": {
+      "type": "string",
+      "description": "Plaid sync cursor for incremental updates"
+    },
+    "last_sync_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last successful sync timestamp"
+    },
+    "connection_status": {
+      "type": "string",
+      "enum": [
+        "connected",
+        "reconnect_required",
+        "error"
+      ],
+      "default": "connected",
+      "description": "Connection health status"
+    }
+  },
+  "required": [
+    "plaid_item_id",
+    "plaid_account_id",
+    "account_name"
+  ]
+}

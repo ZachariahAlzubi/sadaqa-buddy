@@ -1,0 +1,71 @@
+{
+  "name": "Transaction",
+  "type": "object",
+  "properties": {
+    "plaid_transaction_id": {
+      "type": "string",
+      "description": "Plaid's unique transaction ID"
+    },
+    "bank_account_id": {
+      "type": "string",
+      "description": "Reference to BankAccount entity"
+    },
+    "merchant_name": {
+      "type": "string",
+      "description": "Name of the merchant"
+    },
+    "amount": {
+      "type": "number",
+      "description": "Transaction amount (positive for expenses)"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "Transaction date"
+    },
+    "category": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Plaid transaction categories"
+    },
+    "category_primary": {
+      "type": "string",
+      "description": "Primary category for filtering"
+    },
+    "round_up_amount": {
+      "type": "number",
+      "description": "Calculated round-up amount"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "posted",
+        "excluded"
+      ],
+      "default": "pending",
+      "description": "Transaction processing status"
+    },
+    "is_eligible_for_roundup": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether transaction qualifies for round-up"
+    },
+    "exclusion_reason": {
+      "type": "string",
+      "description": "Reason why transaction was excluded from round-up"
+    },
+    "pending_transaction_id": {
+      "type": "string",
+      "description": "If this is a posted version of pending transaction"
+    }
+  },
+  "required": [
+    "plaid_transaction_id",
+    "merchant_name",
+    "amount",
+    "date"
+  ]
+}

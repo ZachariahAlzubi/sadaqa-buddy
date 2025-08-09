@@ -1,0 +1,48 @@
+{
+  "name": "Pledge",
+  "type": "object",
+  "properties": {
+    "transaction_id": {
+      "type": "string",
+      "description": "Reference to Transaction that created this pledge"
+    },
+    "amount": {
+      "type": "number",
+      "description": "Round-up amount pledged"
+    },
+    "charity_id": {
+      "type": "string",
+      "description": "Intended charity at time of pledge creation"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "included_in_donation",
+        "canceled"
+      ],
+      "default": "pending",
+      "description": "Pledge status"
+    },
+    "donation_id": {
+      "type": "string",
+      "description": "Reference to Donation when processed"
+    },
+    "donation_type": {
+      "type": "string",
+      "enum": [
+        "sadaqah",
+        "zakat"
+      ],
+      "description": "Type of charitable giving"
+    },
+    "month_year": {
+      "type": "string",
+      "description": "Month-year for cap calculations (YYYY-MM)"
+    }
+  },
+  "required": [
+    "transaction_id",
+    "amount"
+  ]
+}

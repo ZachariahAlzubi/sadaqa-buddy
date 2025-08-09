@@ -1,0 +1,117 @@
+{
+  "name": "Charity",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Charity name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Charity description"
+    },
+    "ein": {
+      "type": "string",
+      "description": "Tax ID number (EIN)"
+    },
+    "logo_url": {
+      "type": "string",
+      "description": "Charity logo URL"
+    },
+    "website_url": {
+      "type": "string",
+      "description": "Charity website"
+    },
+    "address": {
+      "type": "object",
+      "properties": {
+        "street": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "zip": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string",
+          "default": "US"
+        }
+      }
+    },
+    "zakat_eligible": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether eligible for zakat donations"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "education",
+        "healthcare",
+        "poverty_relief",
+        "disaster_relief",
+        "mosque",
+        "orphans",
+        "water_projects",
+        "food_security",
+        "general"
+      ],
+      "description": "Charity category"
+    },
+    "subcategories": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Specific focus areas"
+    },
+    "total_raised": {
+      "type": "number",
+      "default": 0,
+      "description": "Total amount raised through the app"
+    },
+    "donor_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of donors via the app"
+    },
+    "verified_date": {
+      "type": "string",
+      "format": "date",
+      "description": "When charity verification was completed"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether charity is accepting donations"
+    },
+    "guidestar_profile": {
+      "type": "string",
+      "description": "GuideStar/Candid profile URL"
+    },
+    "payment_details": {
+      "type": "object",
+      "properties": {
+        "routing_number": {
+          "type": "string"
+        },
+        "account_number": {
+          "type": "string"
+        },
+        "bank_name": {
+          "type": "string"
+        }
+      },
+      "description": "Bank details for disbursements (encrypted)"
+    }
+  },
+  "required": [
+    "name",
+    "ein"
+  ]
+}
